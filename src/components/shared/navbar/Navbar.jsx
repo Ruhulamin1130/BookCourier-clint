@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router";
-import logo from "../../../assets/logobook.png";
+import Logo from "../logo/Logo";
 
 const Navbar = () => {
   const user = false; // Replace with useAuth
@@ -57,11 +57,7 @@ const Navbar = () => {
     <header className="sticky top-0 z-50 bg-base-100/80 dark:bg-gray-900 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 shadow-md transition-colors">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="logo" className="w-16 h-10" />
-          <span className="text-xl font-bold text-primary">BookCourier</span>
-        </Link>
-
+        <Logo></Logo>
         {/* Desktop Menu */}
         <nav className="hidden lg:flex gap-6">{navLinks}</nav>
 

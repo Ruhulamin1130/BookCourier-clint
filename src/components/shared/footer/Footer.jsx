@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import Logo from "../logo/Logo";
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <h2 className="text-2xl font-bold text-primary">BookCourier</h2>
+          <Logo></Logo>
           <p className="mt-3 text-sm leading-relaxed">
             BookCourier is a smart library-to-home book delivery system designed
             for readers, students, and researchers to borrow books effortlessly.
