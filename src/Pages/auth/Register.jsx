@@ -1,10 +1,21 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { TbFidgetSpinner } from "react-icons/tb";
 import { Link } from "react-router";
 
 const Register = () => {
   const loading = false;
+  const {
+    register,
+    handleSubmit,
+
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
     <div className="flex justify-center items-center min-h-screen bg-white">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -13,7 +24,7 @@ const Register = () => {
           <p className="text-sm text-gray-400">Welcome to PlantNet</p>
         </div>
         <form
-          //   onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           noValidate=""
           action=""
           className="space-y-6 ng-untouched ng-pristine ng-valid"
@@ -25,23 +36,33 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                name="name"
                 id="name"
                 placeholder="Enter Your Name Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
+                {...register("name", {
+                  required: "Name is required",
+                  maxLength: {
+                    value: 20,
+                    message: "Name must be less than 20 characters",
+                  },
+                })}
               />
+              {errors.name && (
+                <p className="text-red-600 mt-1 text-sm">
+                  {errors.name.message}
+                </p>
+              )}
             </div>
             <div>
               <label htmlFor="image" className="block mb-2 text-sm">
                 Select Image:
               </label>
               <input
-                required
                 type="file"
                 id="image"
-                name="image"
                 accept="image/*"
+                {...register("image")}
               />
             </div>
             <div>
@@ -52,11 +73,22 @@ const Register = () => {
                 type="email"
                 name="email"
                 id="email"
-                required
                 placeholder="Enter Your Email Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: "Entered value does not match email format",
+                  },
+                })}
               />
+              {errors.email && (
+                <p className="text-red-600 mt-1 text-sm">
+                  {errors.email.message}
+                </p>
+              )}
             </div>
             <div>
               <div className="flex justify-between">
@@ -69,10 +101,21 @@ const Register = () => {
                 name="password"
                 autoComplete="new-password"
                 id="password"
-                required
                 placeholder="*******"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-lime-500 bg-gray-200 text-gray-900"
+                {...register("password", {
+                  required: "Password is required",
+                  minLength: {
+                    value: 6,
+                    message: "Password must be at least 6 characters long",
+                  },
+                })}
               />
+              {errors.password && (
+                <p className="text-red-600 mt-1 text-sm">
+                  {errors.password.message}
+                </p>
+              )}
             </div>
           </div>
 
