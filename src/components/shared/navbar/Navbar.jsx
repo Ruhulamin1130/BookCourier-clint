@@ -59,7 +59,7 @@ const Navbar = () => {
         {/* Logo */}
         <Logo></Logo>
         {/* Desktop Menu */}
-        <nav className="hidden lg:flex gap-6">{navLinks}</nav>
+        <nav className="hidden lg:flex gap-6 list-none">{navLinks}</nav>
 
         {/* Right Side */}
         <div className="flex items-center gap-3">
@@ -87,7 +87,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 p-3 shadow-lg bg-base-100 dark:bg-gray-800 rounded-xl w-52 border border-gray-200 dark:border-gray-700"
+                className="menu menu-sm list-none dropdown-content mt-3 p-3 shadow-lg bg-base-100 dark:bg-gray-800 rounded-xl w-52 border border-gray-200 dark:border-gray-700"
               >
                 <li className="text-center font-semibold">
                   {user.displayName || "User"}
@@ -132,7 +132,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 p-3 shadow-lg bg-base-100 dark:bg-gray-800 rounded-box w-52 border border-gray-200 dark:border-gray-700"
+            className="menu menu-sm list-none dropdown-content mt-3 p-3 shadow-lg bg-base-100 dark:bg-gray-800 rounded-box w-52 border border-gray-200 dark:border-gray-700"
           >
             {navLinks}
           </ul>
